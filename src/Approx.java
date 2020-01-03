@@ -1,26 +1,26 @@
-public class Approx {
+class Approx {
 
-    public double y;
+    private double y;
 
-    public double z;
+    private double z;
 
-    public int start;
+    private int start;
 
-    public Approx(double y, double z, int start) {
+    Approx(double y, double z, int start) {
 
-        this.y=y;
+        this.y = y;
 
-        this.z=z;
+        this.z = z;
 
         this.start = start;
 
     }
 
-    public int start(){
+    int start() {
 
-        while(start < 100000){
+        while (start < 100000) {
 
-            if(sum(start) <= Math.pow(2,y) - 1 + z && sum(start) >= Math.pow(2,y) - 1 - z){
+            if (sum(start) <= Math.pow(2, y) - 1 + z && sum(start) >= Math.pow(2, y) - 1 - z) {
 
                 return start;
 
@@ -34,17 +34,17 @@ public class Approx {
 
     }
 
-    public double func(int i){
+    private double func(int i) {
 
-        return (y-i)/(i+1);
+        return (y - i) / (i + 1);
 
     }
 
-    public double prod(int z){
+    private double prod(int z) {
 
         double product = 1;
 
-        for(int i = 0; i <= z; i++){
+        for (int i = 0; i <= z; i++) {
 
             product *= func(i);
 
@@ -54,23 +54,18 @@ public class Approx {
 
     }
 
-    public double sum(int x){
+    private double sum(int x) {
 
         double sum = 0;
 
+        for (int i = 0; i <= x; i++) {
 
-
-        for(int i = 0; i <=x; i++){
-
-            sum +=prod(i);
+            sum += prod(i);
 
         }
 
         return sum;
     }
-
-
-
 
 
 }
